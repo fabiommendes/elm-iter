@@ -1,4 +1,4 @@
-module Tools.Iter exposing
+module Iter exposing
     ( Iter(..), Next, Count
     , next, step, iterator
     , numbers, numbersFrom, numbersBy, countTo, range, linspace, stepsFrom
@@ -218,8 +218,9 @@ range a b =
     linspace 0 5 5 --> 0.0, 1.25, 2.5, 3.75, 5.0
 
 -}
+linspace : Float -> Float -> Int -> Iter Float Float
 linspace a b n =
-    stepsFrom a ((b - a) / (n - 1)) n
+    stepsFrom a ((b - a) / toFloat (n - 1)) (toFloat n)
 
 
 {-| Make `n` steps of `delta` starting from `a`
@@ -272,6 +273,7 @@ repeat a =
     repeatN 3 "foo" -->  "foo", "foo", "foo"
 
 -}
+repeatN : Int -> a -> Iter a Int
 repeatN n a =
     makeIter n
         (\m ->
@@ -321,6 +323,7 @@ power f a =
     power 2 f x -->  x, f x, f(f x)
 
 -}
+powerN : Int -> (a -> a) -> a -> Iter a (Count a)
 powerN n f a =
     take n (power f a)
 

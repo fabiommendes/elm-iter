@@ -2,8 +2,8 @@
     "type": "package",
     "name": "fabiommendes/elm-iter",
     "summary": "Lazy iterators for Elm.",
-    "license": "MIT",
-    "version": "0.1.0",
+    "license": "BSD-3-Clause",
+    "version": "1.0.0",
     "exposed-modules": [
         "Iter"
     ],
